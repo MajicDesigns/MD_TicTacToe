@@ -1,0 +1,35 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Classes and datatypes (KEYWORD1)
+#######################################
+MD_TTT	KEYWORD1
+
+#######################################
+# Methods and functions (KEYWORD2)
+#######################################
+start	KEYWORD2
+doMove	KEYWORD2
+setAutoPlayer	KEYWORD2
+getAutoPlayer	KEYWORD2
+isGameOver	KEYWORD2
+getGameWinner	KEYWORD2
+getWinLine	KEYWORD2
+getBoardPosition KEYWORD2
+
+######################################
+# Constants/defines (LITERAL1)
+#######################################
+TTT_P0	LITERAL1
+TTT_P1	LITERAL1
+TTT_P2	LITERAL1
+TTT_WL_D1	LITERAL1
+TTT_WL_H1	LITERAL1
+TTT_WL_H2	LITERAL1
+TTT_WL_H3	LITERAL1
+TTT_WL_V1	LITERAL1
+TTT_WL_V2	LITERAL1
+TTT_WL_V3	LITERAL1
+TTT_WL_D2	LITERAL1

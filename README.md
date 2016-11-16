@@ -5,3 +5,5 @@ The integration between game library and user interface is largely implemented t
 The code implements an elegant algorithm that is briefly described [here](http://www.omnimaga.org/math-and-science/tic-tac-toe-algorithm/) with some additional features to make decisions easier to implement in code. 
 
 Please read the html documentation in the _doc_ folder of the library.
+
+[Library Documentation](https://majicdesigns.github.io/TicTacToe/)

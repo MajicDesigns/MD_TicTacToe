@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MD_TTT Library: Rules of the Game</title>
+<title>MD_TTT Library: Arduino TicTacToe game decision engine library</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('page_background.html','');});
+$(document).ready(function(){initNavTree('index.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -83,37 +83,35 @@ $(document).ready(function(){initNavTree('page_background.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Rules of the Game </div>  </div>
+<div class="title">Arduino TicTacToe game decision engine library </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>In case there is anyone who has never played this game, TicTacToe (also called Noughts and Crosses, Xs and Os) is a pencil-and-paper game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three respective marks in a horizontal, vertical, or diagonal row wins the game.</p>
-<p>The following example game is won by the first player, X: </p><div class="image">
-<img src="TicTacToe-game.png" alt="TicTacToe-game.png"/>
-<div class="caption">
-TicTacToe Game</div></div>
-<p> Players soon discover that best play from both parties leads to a draw (often referred to as cat or cat's game). Hence, Tic-tac-toe is most often played by young children.</p>
-<h2>Strategy </h2>
-<p>A player can play perfect TicTacToe (win or draw) given they choose the first possible move from the following list.</p><ul>
-<li><b>Win</b>: If the player has two in a row, they can place a third to get three in a row.</li>
-<li><b>Block</b>: If the [opponent] has two in a row, the player must play the third themself to block the opponent.</li>
-<li><b>Fork</b>: Creation of an opportunity where the player has two threats to win (two non-blocked lines of 2).</li>
-<li><b>Blocking an opponent's fork</b>:<ul>
-<li><b>Option 1</b>: The player should create two in a row to force the opponent into defending, as long as it doesn't result in them creating a fork. For example, if "X" has a corner, "O" has the center, and "X" has the opposite corner as well, "O" must not play a corner in order to win. (Playing a corner in this scenario creates a fork for "X" to win.)</li>
-<li><b>Option 2</b>: If there is a configuration where the opponent can fork, the player should block that fork.</li>
+<div class="textblock"><p>The motivation for this library is to explore the separation between the algorithm for managing a game and the user interface for the game. Discovering a TicTacToe algorithm simple enough to implement on the Arduino allows an exploration of this concept with simple user interface requirements.</p>
+<p>The integration between game library and user interface is largely implemented through a callback function that allows the user program to update each game cell as the game progresses, without needing detailed knowledge of the game board and current positions. The example programs supplied provide a framework that can be changed for alternative user interfaces.</p>
+<p>The code implements an elegant algorithm that is briefly described in the blog referenced with some additional features to make decisions easier to implement in code.</p>
+<p>The only call required while running the game is to the library function doMove().</p>
+<h2>Topics </h2>
+<ul>
+<li><a class="el" href="page_background.html">Rules of the Game</a></li>
+<li><a class="el" href="page_library.html">Computer Algorithm for TicTacToe</a></li>
 </ul>
-</li>
-<li><b>Center</b>: A player marks the center. (If it is the first move of the game, playing on a corner gives "O" more opportunities to make a mistake and may therefore be the better choice; however, it makes no difference between perfect players.)</li>
-<li><b>Opposite corner</b>: If the opponent is in the corner, the player plays the opposite corner.</li>
-<li><b>Empty corner</b>: The player plays in a corner square.</li>
-<li><b>Empty side</b>: The player plays in a middle square on any of the 4 sides. </li>
+<h2>References </h2>
+<p>Xeda112358, ‘Tic-Tac-Toe algorithm’, blog on 26 March, 2012, 17:43:57, accessed at <a href="http://www.omnimaga.org/math-and-science/tic-tac-toe-algorithm/">http://www.omnimaga.org/math-and-science/tic-tac-toe-algorithm/</a></p>
+<h2>Revision History </h2>
+<p>March 2013 - version 1.0</p><ul>
+<li>Initial implementation</li>
 </ul>
+<h2>Copyright </h2>
+<p>Copyright (C) 2013 Marco Colli. All rights reserved.</p>
+<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.</p>
+<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
+<p>You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">Arduino TicTacToe game decision engine library</a></li>
-    <li class="footer">Generated on Mon Nov 14 2016 18:45:44 for MD_TTT Library by
+    <li class="footer">Generated on Thu Nov 17 2016 09:18:49 for MD_TTT Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.12 </li>
   </ul>

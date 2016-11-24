@@ -6,4 +6,4 @@ The code implements an elegant algorithm that is briefly described [here](http:/
 
 Please read the html documentation in the _doc_ folder of the library.
 
-[Library Documentation](https://majicdesigns.github.io/TicTacToe/)
+[Library Documentation](https://majicdesigns.github.io/MD_TicTacToe/)

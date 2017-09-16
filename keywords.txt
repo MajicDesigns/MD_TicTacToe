@@ -17,7 +17,7 @@ getAutoPlayer	KEYWORD2
 isGameOver	KEYWORD2
 getGameWinner	KEYWORD2
 getWinLine	KEYWORD2
-getBoardPosition KEYWORD2
+getBoardPosition	KEYWORD2
 
 ######################################
 # Constants/defines (LITERAL1)

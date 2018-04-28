@@ -31,13 +31,16 @@ accessed at http://www.omnimaga.org/math-and-science/tic-tac-toe-algorithm/
 
 Revision History
 ----------------
+April 2018 - version 1.0.1
+- Minor documentation uypdates
+
 March 2013 - version 1.0
 - Initial implementation
 
 Copyright
 ---------
 Copyright (C) 2013 Marco Colli. All rights reserved.
-		
+
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
 License as published by the Free Software Foundation; either
@@ -142,15 +145,15 @@ Now, reform this into a giant 9x8 matrix. This matrix remains constant for all g
 
 |  |D1|H1|H2|H3|V1|V2|V3|D2|
 |-:|-:|-:|-:|-:|-:|-:|-:|-:|
-| a| 1| 1|  |  | 1|  |  |  |			
-| b|  | 1|  |  |  | 1|  |  |		
+| a| 1| 1|  |  | 1|  |  |  |
+| b|  | 1|  |  |  | 1|  |  |
 | c|  | 1|  |  |  |  | 1| 1|
-| d|  |  | 1|  | 1|  |  |  |			
+| d|  |  | 1|  | 1|  |  |  |
 | e| 1|  | 1|  |  | 1|  | 1|
-| f|  |  | 1|  |  |  | 1|  |	
+| f|  |  | 1|  |  |  | 1|  |
 | g|  |  |  | 1| 1|  |  | 1|
-| h|  |  |  | 1|  | 1|  |  |		
-| i| 1|  |  | 1|  |  | 1|  |	
+| h|  |  |  | 1|  | 1|  |  |
+| i| 1|  |  | 1|  |  | 1|  |
 
 The Algorithm
 -------------
@@ -166,9 +169,9 @@ Player 1 makes the first move, say position [a]. The line for positions
 Player 2’s move will subtract from the game matrix. If they take position 
 [e], the resulting game matrix will be 
 
-    [M] = [0, 1,-1, 0, 1,-1, 0,-1]
+    [M] = [1, 1, 0, 0, 1, 0, 0, 0] - [1, 0, 1, 0, 0, 1, 0, 1] = [0, 1,-1, 0, 1,-1, 0,-1]
 
-And so-on for subsequent, alternately adding and subtracting from [M].
+And so-on for subsequent moves, alternately adding and subtracting from [M].
 
 We therefore have a way of tracking how the game is progressing and, more 
 importantly, to test a move against the current board to determine which 
@@ -204,25 +207,25 @@ number appears will also tell exactly where to strike through for wins.
 #include <Arduino.h>
 
 // Miscellaneous defines
-#define	ARRAY_SIZE(x)	(sizeof(x)/sizeof(x[0]))
-#define	CELL_ID(i)		((char)(i+'a'))
+#define ARRAY_SIZE(x) (sizeof(x)/sizeof(x[0]))
+#define CELL_ID(i)    ((char)(i+'a'))
 
-#define	TTT_BOARD_SIZE	9
+#define TTT_BOARD_SIZE  9
 
 // Player definitions
-#define	TTT_P1	1
-#define	TTT_P0	0	// no player
-#define	TTT_P2	-1
+#define TTT_P1  1 ///< Player 1
+#define TTT_P0  0 ///< No player
+#define TTT_P2 -1 ///< Player 2
 
 // Winning Lines definitions
-#define	TTT_WL_D1	0
-#define	TTT_WL_H1	1
-#define	TTT_WL_H2	2
-#define	TTT_WL_H3	3
-#define	TTT_WL_V1	4	
-#define	TTT_WL_V2	5	
-#define	TTT_WL_V3	6	
-#define	TTT_WL_D2	7
+#define TTT_WL_D1 0 ///< Win line diagonal left to right
+#define TTT_WL_H1 1 ///< Win line 1st horizontal
+#define TTT_WL_H2 2 ///< Win line 3nd horizontal
+#define TTT_WL_H3 3 ///< Win line 3rd horizontal
+#define TTT_WL_V1 4 ///< Win line 1st vertical
+#define TTT_WL_V2 5 ///< Win line 2nd vertical
+#define TTT_WL_V3 6 ///< Win line 3rd vertical
+#define TTT_WL_D2 7 ///< Win line diagonal right to left
 
 /**
  * Core object for the MD_TTT library.
@@ -239,7 +242,7 @@ class MD_TTT
   /** 
    * Class Constructor.
    *
-   * Creates a newly initialised MD_TTT object. The parameter mh is the address 
+   * Creates a newly initialized MD_TTT object. The parameter mh is the address 
    * of a user callback function with prototype
    * 
    * void tttCallback(uint8_t pos, int8_t player)
@@ -254,9 +257,9 @@ class MD_TTT
    * The callback function may use any of the library status functions to 
    * determine the status of the game at that point. It is intended that all in-game user interface updates should occur only during the callback. 
    *
-   * \param _mh	pointer to user callback function.
+   * \param mh pointer to user callback function.
    */
-	MD_TTT(void	(*_mh)(uint8_t pos, int8_t player));
+  MD_TTT(void (*mh)(uint8_t pos, int8_t player));
 
   /** 
    * Class Destructor.
@@ -264,7 +267,7 @@ class MD_TTT
    * Release allocated memory and does the necessary to clean up once the object is
    * no longer required.
    */
-	~MD_TTT(void);
+  ~MD_TTT(void);
 
   /** @} */
   //--------------------------------------------------------------
@@ -281,7 +284,7 @@ class MD_TTT
    *
    * \return true if no errors occurred, false otherwise.
    */
-	bool	start();
+  bool start();
   
   /**
    * Execute the next game move.
@@ -298,7 +301,7 @@ class MD_TTT
    * \param player  player identifier TT_P1 or TT_P2.
    * \return true if no errors occurred, false otherwise.
    */
-	bool	doMove(uint8_t pos, int8_t player);
+  bool doMove(uint8_t pos, int8_t player);
 
   /**
    * Set the computer player.
@@ -311,8 +314,8 @@ class MD_TTT
    * \param player  player identifier TT_P1 or TT_P2.
    * \return true if no errors occurred, false otherwise.
    */  
-	bool	setAutoPlayer(int8_t player);
-  
+  bool setAutoPlayer(int8_t player);
+
   /**
    * Get the computer player id.
    *
@@ -322,14 +325,14 @@ class MD_TTT
    *
    * \return the player identifier, one of TTT_P*.
    */
-	int8_t	getAutoPlayer(void) {return _autoPlayer;}
-	
+  int8_t getAutoPlayer(void) {return _autoPlayer;}
+
   /** @} */
   //--------------------------------------------------------------
   /** \name Methods for Board Management.
    * @{
    */
-   
+
   /**
    * Return if the game is over
    *
@@ -337,7 +340,7 @@ class MD_TTT
    *
    * \return true if the game is over, false otherwise.
    */
-	bool	isGameOver(void) {return _gameOver;}
+   bool isGameOver(void) {return _gameOver;}
 
   /**
    * Return the player that won
@@ -347,7 +350,7 @@ class MD_TTT
    *
    * \return winner player identifier, one of TTT_P*.
    */
-	int8_t	getGameWinner(void) {return _gameWinner;}
+  int8_t getGameWinner(void) {return _gameWinner;}
 
   /**
    * Return the winning line
@@ -360,7 +363,7 @@ class MD_TTT
    *
    * \return the winning line id, one of TTT_WL_*.
    */
-	uint8_t	getWinLine(void) {return _winLine;}
+  uint8_t getWinLine(void) {return _winLine;}
 
   /**
    * Get the occupier of a board position
@@ -372,24 +375,24 @@ class MD_TTT
    * \param pos the position to check
    * \return the player identifier, one of TTT_P*.
    */
-	int8_t	getBoardPosition(uint8_t pos);
+  int8_t getBoardPosition(uint8_t pos);
 
   /** @} */
 
   protected:
-	int8_t	_board[TTT_BOARD_SIZE];	  ///< the game board
-	uint8_t	_movesLeft;		  ///< the number of moves left in the game
-	bool	_gameOver;		    ///< flag to know when the game is over
-	int8_t	_gameWinner;    ///< id of player who won
-	uint8_t	_winLine;		    ///< the winning line (TTT_WL_*) or 0xff
-	int8_t	_autoPlayer;	  ///< the computer player (TTT_P0 if neither)
+  int8_t  _board[TTT_BOARD_SIZE];  ///< the game board
+  uint8_t _movesLeft;     ///< the number of moves left in the game
+  bool    _gameOver;      ///< flag to know when the game is over
+  int8_t  _gameWinner;    ///< id of player who won
+  uint8_t _winLine;       ///< the winning line (TTT_WL_*) or 0xff
+  int8_t  _autoPlayer;    ///< the computer player (TTT_P0 if neither)
 
-	void	(*_cbMoveHandler)(uint8_t pos, int8_t player);	///< callback into user code to process the move
+  void (*_cbMoveHandler)(uint8_t pos, int8_t player); ///< callback into user code to process the move
 
-	uint8_t	doAutoMove(int8_t player);		    ///< work out a move for the auto player
+  uint8_t doAutoMove(int8_t player);        ///< work out a move for the auto player
 
-	void	unpackByte(uint8_t *pb, uint8_t b);	///< unpack the byte into the array
-	bool	randomChoice(void);					        ///< return true or false randomly
+  void unpackByte(uint8_t *pb, uint8_t b);  ///< unpack the byte into the array
+  bool randomChoice(void);                  ///< return true or false randomly
 };
 
 #endif
